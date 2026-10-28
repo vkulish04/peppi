@@ -1,0 +1,43 @@
+Бухгалтерія Дитсадка — Docker шпаргалка
+========================================
+
+Перший запуск:
+  cp .env.docker.example .env
+  # змінити CHANGE_ME_* у .env
+  docker compose up -d --build
+  docker compose exec app php artisan db:seed --force
+
+Відкрити:
+  http://localhost:8080
+
+Статус:
+  docker compose ps
+
+Логи:
+  docker compose logs -f app web
+  docker compose logs -f db
+
+Artisan:
+  docker compose exec app php artisan about
+  docker compose exec app php artisan migrate:status
+  docker compose exec app php artisan optimize:clear
+
+Backup:
+  ./docker/backup-db.sh
+
+Restore:
+  ./docker/restore-db.sh backups/FILE.sql.gz
+
+Оновлення:
+  ./docker/backup-db.sh
+  docker compose build --pull
+  docker compose up -d
+
+Workers (коли знадобляться SMS/черги/розклад):
+  docker compose --profile workers up -d
+
+Зупинити без видалення даних:
+  docker compose down
+
+НЕБЕЗПЕЧНО — видаляє volumes/БД:
+  docker compose down -v

@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration { public function up(): void { Schema::create('monthly_bill_items', function(Blueprint $t){ $t->id(); $t->foreignId('monthly_bill_id')->constrained()->cascadeOnDelete(); $t->foreignId('activity_id')->nullable()->constrained()->nullOnDelete(); $t->string('name'); $t->string('billing_type'); $t->decimal('quantity',10,2)->default(1); $t->decimal('unit_price',12,2); $t->decimal('amount',12,2); $t->timestamps(); }); } public function down(): void { Schema::dropIfExists('monthly_bill_items'); } };

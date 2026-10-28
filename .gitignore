@@ -1,0 +1,34 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.docker.example
+!.env.example.fullstack
+*.pem
+*.key
+auth.json
+
+# Dependencies and generated assets
+/node_modules/
+/vendor/
+/public/build/
+/public/hot
+/public/storage
+/storage/
+/bootstrap/cache/
+
+# Database snapshots and private historical imports
+/backups/
+*.sql
+*.sql.gz
+*.sqlite
+*.sqlite3
+/database/seeders/September2026PhotoSeeder.php
+/IMPORT_SEPTEMBER_2026.md
+
+# Local editor and OS state
+.DS_Store
+.idea/
+.vscode/
+*.log
+*.zip
+*.tar.gz

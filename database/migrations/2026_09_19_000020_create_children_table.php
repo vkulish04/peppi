@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration { public function up(): void { Schema::create('children', function(Blueprint $t){ $t->id(); $t->foreignId('group_id')->constrained()->restrictOnDelete(); $t->string('full_name'); $t->date('birth_date')->nullable(); $t->string('parent_name')->nullable(); $t->string('parent_phone',50)->nullable(); $t->decimal('discount_percent',5,2)->default(0); $t->text('notes')->nullable(); $t->boolean('active')->default(true); $t->timestamps(); $t->softDeletes(); $t->index(['group_id','active']); }); } public function down(): void { Schema::dropIfExists('children'); } };

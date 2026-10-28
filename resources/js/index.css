@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+.logo-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #fff;
+}
+
+.logo-intro-image {
+  display: block;
+  width: min(600px, 82vw);
+  height: auto;
+  object-fit: contain;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scrollbar-color: rgba(234, 88, 12, 0.3) transparent;
+    scrollbar-width: thin;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-overflow-scrolling: touch;
+  }
+  h1, h2, h3, .font-heading {
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+/* Stylized modern scrollbars across the app */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(214, 211, 209, 0.7); /* stone-300 */
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(234, 88, 12, 0.5); /* warm orange-500 accent */
+}
+
+/* Custom styled scrollbar utility for tables and scroll panels */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(249, 115, 22, 0.4) rgba(245, 245, 244, 0.5);
+  -webkit-overflow-scrolling: touch;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(245, 245, 244, 0.6);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(234, 88, 12, 0.35);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(234, 88, 12, 0.7);
+}
+
+/* Hide scrollbars on mobile tab bars, chip lists, etc. */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.lesson-quantity-number {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.lesson-quantity-number::-webkit-inner-spin-button,
+.lesson-quantity-number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .journal-table-scroll {
+    max-height: 65vh;
+    isolation: isolate;
+  }
+
+  .journal-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background-color: #f5f5f4;
+    box-shadow: inset 0 -1px 0 #d6d3d1;
+  }
+
+  .journal-table thead th:first-child {
+    left: 0;
+    z-index: 30;
+  }
+
+  .journal-table thead th.bg-teal-50\/50 {
+    background-color: #f0fdfa;
+  }
+
+  .journal-table thead th.bg-orange-50\/40 {
+    background-color: #fff7ed;
+  }
+}
+
+@media print {
+  .journal-table-scroll {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .journal-table th,
+  .journal-table td {
+    position: static;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-break {
+    page-break-after: always;
+  }
+}
